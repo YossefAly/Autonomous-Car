@@ -1,0 +1,22 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="map_file" default="$(find mybot_nav)/maps/my_map.yaml"/>
+
+  <!-- Set the path to your RViz configuration file -->
+  <arg name="rviz_config_file" default="$(find mybot_nav)/rviz/config.rviz"/>
+
+  <!-- Launch RViz -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_config_file)">
+    <param name="fixed_frame" value="map"/>
+  </node>
+
+  <!-- Map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!-- AMCL -->
+  <include file="$(find mybot_pp)/launch/amcl.launch"/>
+
+  <!-- move_base -->
+  <include file="$(find mybot_pp)/launch/move_base.launch"/>
+
+</launch>

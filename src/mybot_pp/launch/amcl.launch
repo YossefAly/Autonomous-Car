@@ -1,0 +1,28 @@
+<launch>
+	
+	<!-- amcl node -->
+	<node name="amcl" pkg="amcl" type="amcl" output="screen">
+	<param name="odom_frame_id" value="odom"/>
+	<param name="odom_model_type" value="diff-corrected"/>
+	<param name="base_frame_id" value="chassis"/>
+	<param name="global_frame_id" value="map"/>
+
+	<!-- overall filter params -->
+	<param name="min_particles" value="100" />
+	<param name="max_particles" value="5000"/>
+	<param name="initial_pose_x" value="0"/>
+	<param name="initial_pose_y" value="0"/>
+	<param name="initial_pose_a" value="0"/>
+	<param name="update_min_d" value="0.01"/>
+	<param name="update_min_a" value="0.01"/>
+	<param name="recovery_alpha_slow " value="0.001" />
+	<param name="recovery_alpha_fast" value="0.1" />
+
+	<!-- overall filter params -->
+	<param name = "laser_z_hit" value = "0.95" />
+	<param name = "laser_z_rand" value = "0.05" />
+	<param name = "laser_max_range" value = "-1" />
+      
+</node>
+
+</launch>
