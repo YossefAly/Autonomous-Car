@@ -1,0 +1,15 @@
+<launch>
+    <!-- Set the path to your map file -->
+    <arg name="map_file" default="$(find mybot_nav)/maps/my_map2.yaml"/>
+
+    <!-- Set the path to your RViz configuration file -->
+    <arg name="rviz_config_file" default="$(find mybot_nav)/rviz/config.rviz"/>
+
+    <!-- Launch RViz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_config_file)">
+    </node>
+
+    <!-- Load the map -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+</launch>
+
